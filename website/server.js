@@ -4,15 +4,15 @@ path = require('path'),
 
 config = require('./config'),
 
-MongoClient = require('mongodb').MongoClient,
-url = config.dbConfig.host + ":" + config.dbConfig.port + "/" + config.dbConfig.db;
+MongoClient = require('mongodb').MongoClient;
+
 
 app.set('view engine', 'pug');
 
 app.use('/libs', express.static(path.join(__dirname, '/public/libs')));
 app.use('/app', express.static(path.join(__dirname, '/public/app')));
 
-MongoClient.connect(url)
+MongoClient.connect(config.dbConfig.url)
 
     .then((db) => {
         console.log("Connected to MongoDB");
