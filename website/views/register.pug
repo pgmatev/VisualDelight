@@ -1,0 +1,32 @@
+extends ./layouts/_layout.pug
+
+block link
+  link(href="/libs/semantic/dist/semantic.min.css", rel="stylesheet")
+  // Semantic UI  
+  
+block main
+  div(class="ui four column grid")
+    div(class="row")
+    div(class="row")
+    div(class="row")
+    div(class="row")
+    div(class="row")    
+    div(class="row")
+      div(class="column")
+      div(class="column")
+       div(class="ui inverted red segment")
+        form(class="ui form" method="POST" action="register_process")
+          div(class="ui left icon input")
+            input(type="text")
+            i(class="user icon")
+          br  
+          br
+          div(class="ui left icon input")
+            input(type="text" )
+            i(class="lock icon")
+          br
+          br  
+          br
+          button(class="ui basic button" type="submit")
+            i(class="write icon")
+            | Register     
