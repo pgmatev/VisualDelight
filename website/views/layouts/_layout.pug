@@ -1,0 +1,73 @@
+doctype html
+html.no-js(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    block link
+
+    link(href='http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,300,700', rel='stylesheet', type='text/css')
+
+    link(rel='stylesheet', href='/app/css/navbar/reset.css')
+    // navbar's CSS reset
+    link(rel='stylesheet', href='/app/css/navbar/style.css')
+    // navbar's custom style
+    link(rel='stylesheet', href='/app/css/main.css')
+    // Main CSS resource
+
+    block script
+
+    script(src='/libs/modernizrCustom/modernizr.js')
+    // Custom navbar's Modernizr
+    script(src='/libs/jquery/dist/jquery.min.js')
+    // jQuery
+    script(src='/app/js/navbar/main.js')
+    // navbar's JS resource
+
+    title VisualDelight
+
+  body
+    main
+      block main
+
+    a.cd-nav-trigger(href='#cd-nav')
+      span
+        // used to create the menu icon
+    // .cd-nav-trigger
+
+    nav#cd-nav.cd-nav-container
+      header
+        a(href='/')
+          h3 Visual Delight
+        a.cd-close-nav(href='#0') Close
+      ul.cd-nav
+        li.cd-selected
+          a(href='/')
+            span
+              img(src='/app/img/home.png', alt='home image')
+            em Home
+        li
+          a(href='#')
+            span
+              img(src='/app/img/user.png', alt='user image')
+            em Your Profile
+        li
+          a(href='#')
+            span
+              img(src='/app/img/images.png', alt='browse images image')
+            em Browse images
+        li
+          a(href='#')
+            span
+              img(src='/app/img/create.png', alt='create image')
+            em Create
+        li
+          a(href='#')
+            span
+              img(src='/app/img/users.png', alt='users image')
+            em Find friends
+      // .cd-3d-nav
+      
+    .cd-overlay
+      // shadow layer visible when navigation is visible
+    #bg

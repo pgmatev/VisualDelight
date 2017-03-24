@@ -12,7 +12,7 @@ app.set('view engine', 'pug');
 app.use('/libs', express.static(path.join(__dirname, '/public/libs')));
 app.use('/app', express.static(path.join(__dirname, '/public/app')));
 
-MongoClient.connect(config.dbConfig.url)
+MongoClient.connect(config.dbConfig.getUrl())
 
     .then((db) => {
         console.log("Connected to MongoDB");
@@ -23,13 +23,16 @@ MongoClient.connect(config.dbConfig.url)
 
         // Simple routing to home page
         app.get('/', (req, res) => {
-            res.sendFile(path.join(__dirname, '/public/app/index.html'));
+            res.render('index');
         });
 
-        //Register routing
-        app.get('/to_register', (req, res) => {
+        //To Register page routing
+        app.get('/register', (req, res) => {
             res.render('register');    
         });
+
+        //Register process
+
 
     })    
 
