@@ -47,8 +47,35 @@ MongoClient.connect( config.dbConfig.getUrl() )
         });
 
         //Register process
-        app.get('/register_process', (req, res) => {
+        app.post('/register_process', (req, res) => {
+            let user, usernameRegex, UsernameErr, passowrdRegex, PasswordErr;
 
+            user = {
+                username: req.body.username,
+                password: req.body.password
+            };
+
+            usernameRegex = "/^[a-zA-Z0-9]+$/";
+            passowrdRegex = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/";
+
+            // Validation for username
+            if(user.username.match(usernameRegex)) {
+                UsernameErr = "Invalid username!";
+                res.render('register', { UsernameErr });
+                UsernameErr = undefined;
+            }
+
+            // Validation for password
+            if(user.password.match(passowrdRegex)){
+                PasswordErr = "Invalid password!";
+                res.render('register', { PasswordErr });
+                UsernameErr = undefined;
+            }
+
+            // Succeed
+            else {
+                res.redirect('/');
+            }
         });    
 
     })    

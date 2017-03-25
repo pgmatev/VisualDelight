@@ -1,4 +1,4 @@
-var dbConfig = require('./db.config.js');
+const dbConfig = require('./db.config.js');
 
 module.exports = {
     dbConfig
