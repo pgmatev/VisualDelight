@@ -5,15 +5,16 @@ block link
   // Semantic UI  
   
 block main
-  div(class="ui three column grid")
+  div(class="ui grid")
     div(class="row")
     div(class="row")
     div(class="row")
+
     div(class="row")
-    div(class="row")    
-    div(class="row")
-      div(class="column")
-       div(class="ui center aligned red stacked segment")
+      div(class="two wide column")
+      div(class="twelve wide column")
+
+       div(class="ui raised center aligned red stacked segment")
         form(class="ui form error" method="POST" action="register_process")
           div(class="field")
             div(class="ui left icon input")
@@ -23,28 +24,30 @@ block main
             if UsernameErr  
               div(class="ui error message") 
                 div(class="header")= UsernameErr  
-
           br
-
           div(class="field")  
-            div(class="ui left icon input required field")
+            div(class="ui left icon input")
               input(type="password" name="password" placeholder="Password")
               i(class="lock icon")
 
             if PasswordErr  
               div(class="ui error message") 
                 div(class="header")= PasswordErr  
-
             br  
             br
-
             button(class="ui inverted red right labeled icon button" type="submit")
               i(class="write icon")
               | Register  
 
     div(class="row")
-      div(class="column")  
-       div(class="ui center aligned red stacked segment")
+      div(class="ui horizontal divider")
+        | Or          
+
+    div(class="row")
+      div(class="two wide column")
+      div(class="twelve wide column")   
+
+       div(class="ui raised center aligned red stacked segment")
         form(class="ui form error" method="POST" action="login_process")
           div(class="field")
             div(class="ui left icon input")
@@ -52,23 +55,19 @@ block main
               i(class="user icon")
 
             if UsernameErr  
-              div(class="ui error message") 
+              div(class="ui error message")
                 div(class="header")= UsernameErr  
-
           br
-
           div(class="field")  
-            div(class="ui left icon input required field")
+            div(class="ui left icon input")
               input(type="password" name="password" placeholder="Password")
               i(class="lock icon")
 
             if PasswordErr  
               div(class="ui error message") 
                 div(class="header")= PasswordErr  
-
             br  
             br
-
             button(class="ui inverted red right labeled icon button" type="submit")
-              i(class="write icon")
-              | Login                   
+              i(class="sign in icon")
+              | Sign in                   

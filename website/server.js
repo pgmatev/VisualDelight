@@ -42,8 +42,8 @@ MongoClient.connect( config.dbConfig.getUrl() )
         });
 
         //To Register page routing
-        app.get('/form', (req, res) => {
-            res.render('form');    
+        app.get('/forms', (req, res) => {
+            res.render('forms');    
         });
 
         //Register process
@@ -61,14 +61,14 @@ MongoClient.connect( config.dbConfig.getUrl() )
             // Validation for username
             if(!user.username.match(UsernameRegex)) {
                 UsernameErr = "Invalid username!";
-                res.render('register', { UsernameErr });
+                res.render('forms', { UsernameErr });
                 UsernameErr = undefined;
             }
 
             // Validation for password
             if(!user.password.match(PasswordRegex)){
                 PasswordErr = "Invalid password!";
-                res.render('register', { PasswordErr });
+                res.render('forms', { PasswordErr });
                 UsernameErr = undefined;
             }
 
