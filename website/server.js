@@ -3,7 +3,7 @@ app = express(),
 path = require('path'),
 fs = require('fs'),
 
-morgan = require('morgan');
+morgan = require('morgan'),
 
 bodyParser = require('body-parser'),
 
@@ -42,8 +42,8 @@ MongoClient.connect( config.dbConfig.getUrl() )
         });
 
         //To Register page routing
-        app.get('/register', (req, res) => {
-            res.render('register');    
+        app.get('/form', (req, res) => {
+            res.render('form');    
         });
 
         //Register process
@@ -66,7 +66,7 @@ MongoClient.connect( config.dbConfig.getUrl() )
             }
 
             // Validation for password
-            else if(user.password.match(PasswordRegex)){
+            if(!user.password.match(PasswordRegex)){
                 PasswordErr = "Invalid password!";
                 res.render('register', { PasswordErr });
                 UsernameErr = undefined;
