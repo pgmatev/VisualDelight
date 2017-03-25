@@ -9,23 +9,23 @@ $(function () {
 		event.preventDefault();
 		toggleNav(false);
 	});
-	//select a new section
-	$('.cd-nav li').on('click', function(event){
-		event.preventDefault();
-		var target = $(this),
-			//detect which section user has chosen
-			sectionTarget = target.data('menu');
-		if( !target.hasClass('cd-selected') ) {
-			//if user has selected a section different from the one alredy visible
-			//update the navigation -> assign the .cd-selected class to the selected item
-			target.addClass('cd-selected').siblings('.cd-selected').removeClass('cd-selected');
-			//load the new section
-			loadNewContent(sectionTarget);
-		} else {
-			// otherwise close navigation
-			toggleNav(false);
-		}
-	});
+	// select a new section
+	// $('.cd-nav li').on('click', function(event){
+	// 	event.preventDefault();
+	// 	var target = $(this),
+	// 		//detect which section user has chosen
+	// 		sectionTarget = target.data('menu');
+	// 	if( !target.hasClass('cd-selected') ) {
+	// 		//if user has selected a section different from the one alredy visible
+	// 		//update the navigation -> assign the .cd-selected class to the selected item
+	// 		target.addClass('cd-selected').siblings('.cd-selected').removeClass('cd-selected');
+	// 		//load the new section
+	// 		loadNewContent(sectionTarget);
+	// 	} else {
+	// 		// otherwise close navigation
+	// 		toggleNav(false);
+	// 	}
+	// });
 
 	function toggleNav(bool) {
 		$('.cd-nav-container, .cd-overlay').toggleClass('is-visible', bool);
