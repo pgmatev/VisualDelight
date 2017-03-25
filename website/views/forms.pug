@@ -48,24 +48,24 @@ block main
       div(class="twelve wide column")   
 
        div(class="ui raised center aligned red stacked segment")
-        form(class="ui form error" method="POST" action="login_process")
+        form(class="ui form error" method="GET" action="login_process")
           div(class="field")
             div(class="ui left icon input")
               input(type="text" name="username" placeholder="Username")
               i(class="user icon")
 
-            if UsernameErr  
+            if UsernameLoginErr  
               div(class="ui error message")
-                div(class="header")= UsernameErr  
+                div(class="header")= UsernameLoginErr  
           br
           div(class="field")  
             div(class="ui left icon input")
               input(type="password" name="password" placeholder="Password")
               i(class="lock icon")
 
-            if PasswordErr  
+            if PasswordLoginErr  
               div(class="ui error message") 
-                div(class="header")= PasswordErr  
+                div(class="header")= PasswordLoginErr  
             br  
             br
             button(class="ui inverted red right labeled icon button" type="submit")

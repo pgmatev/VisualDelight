@@ -52,7 +52,9 @@ MongoClient.connect( config.dbConfig.getUrl() )
 
             user = {
                 username: req.body.username,
-                password: req.body.password
+                password: req.body.password,
+                imgaes: [''],
+                friends: ['']
             };
 
             UsernameRegex = /^[A-Za-z0-9_]{3,20}$/;
@@ -83,6 +85,11 @@ MongoClient.connect( config.dbConfig.getUrl() )
                     });
             }
         });    
+
+        //Log in process
+        app.get('/login_process', (req, res) => {
+
+        })
 
     })    
 
