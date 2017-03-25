@@ -1,18 +1,33 @@
 const express = require('express'),
 app = express(),
 path = require('path'),
+fs = require('fs'),
 
+morgan = require('morgan');
+
+bodyParser = require('body-parser'),
+
+// Configs
 config = require('./config'),
 
+// MongoClient
 MongoClient = require('mongodb').MongoClient;
 
-
+// View engine pug
 app.set('view engine', 'pug');
+
+// Morga logger
+app.use(morgan('combined', {
+    stream: fs.createWriteStream(path.join(__dirname, '/logs/morgan.log'), 'utf-8')
+}));
+
+// BodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/libs', express.static(path.join(__dirname, '/public/libs')));
 app.use('/app', express.static(path.join(__dirname, '/public/app')));
 
-MongoClient.connect(config.dbConfig.getUrl())
+MongoClient.connect( config.dbConfig.getUrl() )
 
     .then((db) => {
         console.log("Connected to MongoDB");
@@ -32,7 +47,9 @@ MongoClient.connect(config.dbConfig.getUrl())
         });
 
         //Register process
+        app.get('/register_process', (req, res) => {
 
+        });    
 
     })    
 
