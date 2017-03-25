@@ -14,19 +14,19 @@ block main
     div(class="row")
       div(class="column")
       div(class="column")
-       div(class="ui inverted red segment")
+       div(class="ui red piled segment")
         form(class="ui form" method="POST" action="register_process")
           div(class="ui left icon input")
-            input(type="text")
+            input(type="text" name="username" placeholder="Username")
             i(class="user icon")
           br  
           br
           div(class="ui left icon input")
-            input(type="text" )
+            input(type="text" name="password" placeholder="Password")
             i(class="lock icon")
           br
           br  
           br
-          button(class="ui basic button" type="submit")
+          button(class="ui inverted red right labeled icon button" type="submit")
             i(class="write icon")
-            | Register     
+            | Register           
