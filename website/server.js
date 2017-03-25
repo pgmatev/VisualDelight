@@ -48,25 +48,25 @@ MongoClient.connect( config.dbConfig.getUrl() )
 
         //Register process
         app.post('/register_process', (req, res) => {
-            let user, usernameRegex, UsernameErr, passowrdRegex, PasswordErr;
+            let user, UsernameRegex, UsernameErr, PasswordRegex, PasswordErr;
 
             user = {
                 username: req.body.username,
                 password: req.body.password
             };
 
-            usernameRegex = "/^[a-zA-Z0-9]+$/";
-            passowrdRegex = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/";
+            UsernameRegex = /^[A-Za-z0-9_]{3,20}$/;
+            PasswordRegex = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/
 
             // Validation for username
-            if(user.username.match(usernameRegex)) {
+            if(!user.username.match(UsernameRegex)) {
                 UsernameErr = "Invalid username!";
                 res.render('register', { UsernameErr });
                 UsernameErr = undefined;
             }
 
             // Validation for password
-            if(user.password.match(passowrdRegex)){
+            else if(user.password.match(PasswordRegex)){
                 PasswordErr = "Invalid password!";
                 res.render('register', { PasswordErr });
                 UsernameErr = undefined;
@@ -74,7 +74,13 @@ MongoClient.connect( config.dbConfig.getUrl() )
 
             // Succeed
             else {
-                res.redirect('/');
+                db.collection('users').insertOne(user)
+                    .then(() => {
+                        res.redirect('/');
+                    })
+                    .catch((err) => {
+                        console.error(`Error: ${err}`);
+                    });
             }
         });    
 
